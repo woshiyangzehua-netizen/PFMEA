@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "node -e \"require('typescript/bin/tsc')\" && node -e \"const cp=require('child_process'); const path=require('path'); const vite=path.join(path.dirname(require.resolve('vite/package.json')),'bin','vite.js'); const r=cp.spawnSync(process.execPath,[vite,'build'],{stdio:'inherit'}); process.exit(r.status??1);\"",
     "preview": "vite preview"
   },
   "dependencies": {
