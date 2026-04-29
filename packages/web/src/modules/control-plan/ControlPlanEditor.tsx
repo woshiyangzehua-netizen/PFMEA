@@ -4,7 +4,7 @@ import {
   Button, Table, Space, Tag, Modal, Form, Input, Select, message,
   Popconfirm, Switch, Card, Divider, Alert,
 } from 'antd'
-import { PlusOutlined, DeleteOutlined, CheckCircleOutlined, WarningOutlined } from '@ant-design/icons'
+import { PlusOutlined, CheckCircleOutlined, WarningOutlined } from '@ant-design/icons'
 import client from '../../api/client'
 
 interface ControlPlanItem {

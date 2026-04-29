@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
-import { Button, Space, message, Modal, Form, Input, InputNumber, Select, DatePicker } from 'antd'
+import { Button, Space, message, Modal, Form, Input, InputNumber, Select } from 'antd'
 import { AgGridReact } from 'ag-grid-react'
 import { ModuleRegistry, ClientSideRowModelModule } from 'ag-grid-community'
 import type { ColDef } from 'ag-grid-community'
@@ -43,7 +43,6 @@ interface TableRow {
 
 export default function PfmeaTableView({ pfmeaId }: Props) {
   const [rowData, setRowData] = useState<TableRow[]>([])
-  const [loading, setLoading] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const [modalType, setModalType] = useState<'structure' | 'function' | 'failure' | 'risk'>('structure')
   const [form] = Form.useForm()
@@ -52,7 +51,6 @@ export default function PfmeaTableView({ pfmeaId }: Props) {
   const [failures, setFailures] = useState<any[]>([])
 
   const fetchData = async () => {
-    setLoading(true)
     try {
       const res = await client.get(`/pfmea/${pfmeaId}`)
       const { structures: s, functions: f, failures: fa, risks: r } = res.data
@@ -117,8 +115,6 @@ export default function PfmeaTableView({ pfmeaId }: Props) {
       setRowData(rows)
     } catch (e) {
       message.error('加载PFMEA数据失败')
-    } finally {
-      setLoading(false)
     }
   }
 
