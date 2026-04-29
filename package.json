@@ -1,0 +1,27 @@
+{
+  "name": "capp-pfmea",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "npm run dev -w packages/api",
+    "dev:web": "npm run dev -w packages/web",
+    "build": "npm run build -w packages/api && npm run build -w packages/web",
+    "db:push": "npm run db:push -w packages/api",
+    "db:studio": "npm run db:studio -w packages/api"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.2.2",
+    "ag-grid-community": "^35.2.1",
+    "ag-grid-react": "^35.2.1",
+    "antd": "^5.29.3",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1"
+  }
+}
